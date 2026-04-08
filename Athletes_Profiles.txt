@@ -1,0 +1,3 @@
+Athlete 1: Just started, irregular schedule and less intense workouts. 
+Athlete 2: More consistent, set schedule and can handle more intensity. 
+Athlete 3: Trained athlete, most consistent with high intensity workouts. 
