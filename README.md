@@ -21,8 +21,8 @@ The beginner had the least workout duration, the intermediate athlete had higher
 The beginner had the lowest average heart rate, the intermediate athlete had a higher average heart rate, and the advanced athlete had the highest workout duration
 The beginner had the highest number of light workouts, the intermediate athlete had the highest moderate workouts, and the advanced athlete had the highest vigorous workouts
 
-Workspace Contents:
-	
+Workspace Contents and Units:
+There are time variables such as beginner_light_time that contain the time spent on each workout zone in minutes for a specific athlete (beginner, intermediate, advanced). There are the average heart rate variables for each athlete that calculate the average post workout heart rate for each athlete measured in beats per minute. The duration variables that calulate the duration of the workouts in minutes in total for each athlete. The mean recovery rate variables that calculate the average recovery rate for each athlete in beats per minute. The mean duration variables that calculate the average duration of the workouts (excluding rest days) commited by each particular athlete. The std intensity variables that calculate the standard deviation of the insensity (consistency of workouts). And the total workouts variables calculated for each athlete that contain the total amount of workouts completed. 
 
 Reflection Questions:
 
