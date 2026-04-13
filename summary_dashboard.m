@@ -7,6 +7,7 @@ yValues = [beginner_duration; intermediate_duration; advanced_duration]
 graph = bar(xValues, yValues)
 graph.FaceColor = 'flat';
 graph.CData = [0 0 1; 0 1 0; 1 1 0];
+% Need the color grid because it is a single series
 title("Athlete Total Workout Duration")
 ylabel("Total Workout Duration (minutes)")
 xlabel("Athlete")
@@ -23,6 +24,7 @@ yValues = [beginner; intermediate; advanced]
 graph = bar(xValues, yValues)
 graph.FaceColor = 'flat';
 graph.CData = [0 0 1; 0 1 0; 1 1 0];
+% Need the color grid because it is a single series
 title("Average Workout Intensity")
 ylabel("Average Intensity")
 xlabel("Athlete")
@@ -33,6 +35,7 @@ yValues = [beginner_total_workouts; intermediate_total_workouts; advanced_total_
 graph = bar(xValues, yValues)
 graph.FaceColor = 'flat';
 graph.CData = [0 0 1; 0 1 0; 1 1 0];
+% Need the color grid because it is a single series
 title("Total Workouts Completed")
 ylabel("Total Workouts")
 xlabel("Athlete")
@@ -43,8 +46,10 @@ yValues = [beginner_std_intensity; intermediate_std_intensity; advanced_std_inte
 graph = bar(xValues, yValues);
 graph.FaceColor = 'flat';
 graph.CData = [0 0 1; 0 1 0; 1 1 0];
+% Need the color grid because it is a single series
 title("Athlete Training Consistency")
 ylabel("Training Consistency")
 xlabel("Athlete")
 
 saveas(gcf, fullfile("..", "Results", "Figures", "Summary_Dashboard.png"))
+% Saves to the figures directory inside the results directory as a png
