@@ -14,5 +14,6 @@ xlabel("Day (1-21)")
 ylabel("Post-Workout Heart Rate (bpm)")
 title("Post-Workout Heart Rate for Each Athlete Each Day")
 legend("Beginner", "Intermediate", "Advanced")
+% Creates a legend that shows which colored line is which set of data
 saveas(gcf, fullfile("..", "Results", "Figures", "HR_Trends.png"))
 % Saves to the figures directory inside the results directory as a png
