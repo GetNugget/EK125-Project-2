@@ -44,7 +44,7 @@ graph = bar(xValues, yValues);
 graph.FaceColor = 'flat';
 graph.CData = [0 0 1; 0 1 0; 1 1 0];
 title("Athlete Training Consistency")
-ylabel("Training COnsistency")
+ylabel("Training Consistency")
 xlabel("Athlete")
 
 
