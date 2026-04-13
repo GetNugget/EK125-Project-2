@@ -1,6 +1,6 @@
 Run Instructions:
 
-	Make sure to run the main_analysis.m file first. Run each script separately. Make sure the script fully runs, and before running the next figure, make sure to close the plot that was previously generated so that it doesn't simply get overwritten by the current plot.
+Make sure to run the main_analysis.m file first. Run each script separately. Make sure the script fully runs, and before running the next figure, make sure to close the plot that was previously generated so that it doesn't simply get overwritten by the current plot.
 
 Key Findings:
 
