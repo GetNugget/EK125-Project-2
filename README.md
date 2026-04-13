@@ -2,8 +2,8 @@ Fitness Tracker Analysis - Option 1
 
 Roles:
 
-Cody Phothisane - Data Manager
-Jason Nguyen - Algorithm Developer
+Cody Phothisane - Data Manager;
+Jason Nguyen - Algorithm Developer;
 Albert Liu - Visualization Specialist
 
 Directory Structure:
