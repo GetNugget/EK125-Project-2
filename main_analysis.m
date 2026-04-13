@@ -1,8 +1,8 @@
 clear; clc;
 
-beginner_data = readtable(fullfile('Data','Athletes','athlete1_beginner.csv'));
-intermediate_data = readtable(fullfile('Data','Athletes','athlete2_intermediate.csv'));
-advanced_data = readtable(fullfile('Data','Athletes','athlete3_advanced.csv'));
+beginner_data = readtable(fullfile('..','Data','Athletes','Athlete_Beginner.csv'));
+intermediate_data = readtable(fullfile('..','Data','Athletes','Athlete_Intermediate.csv'));
+advanced_data = readtable(fullfile('..','Data','Athletes','Athlete_Advanced.csv'));
 
 beginner_zones = [];
 intermediate_zones = [];
@@ -139,5 +139,5 @@ advanced_total_workouts = sum(valid_A);
 
 
 summary_table = table(["Beginner"; "Intermediate"; "Advanced"], [beginner_avg_HR; intermediate_avg_HR; advanced_avg_HR], [beginner_duration; intermediate_duration; advanced_duration], [beginner_std_intensity; intermediate_std_intensity; advanced_std_intensity], 'VariableNames', {'Athlete', 'AvgHeartRate', 'TotalMinutes', 'Consistency'})
-writetable(summary_table, fullfile('Results','summary_statistics.csv'))
-save(fullfile('Results','analysis.mat'))
+writetable(summary_table, fullfile('..','Results','summary_statistics.csv'))
+save(fullfile('..','Results','analysis_results.mat'))
