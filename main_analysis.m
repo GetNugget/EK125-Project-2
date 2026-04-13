@@ -1,4 +1,32 @@
 %{
+main_analysis - the main analysis script that has all the calculations
+for the summary table and plots 
+
+Cody Phothisane - Data Manager (Part 1)
+Jason Nguyen - Algorithm Developer (Part 2)
+Albert Liu - Vizualization Specialist (Part 3) 
+
+Date: April 2026
+
+Description: The script sets everything up by using clear and clc. It then
+loads the data from the csv files of the workouts the athletes did. After
+that, it sets up the variables used for the later calculations. It then
+loops through each workout to find the zone it is placed under as well as
+finding the resting time of each workout. Further calculations were made
+for the plots and then a summary, time table, and workspace variable analysis 
+sheet based off the workouts was made and exported to the results directory. 
+
+Inputs: The 3 athlete csv files that contains their workouts
+(Athlete_Beginner.csv, Athlete_Intermediate.csv, Athlete_Advanced.csv)
+
+Outputs: The Summary Table (the athletes and their average heart rate,
+total minutes working out, and consistency), the time table (Athletes and 
+how much time they put into each workout zone), and the workspace variable
+analysis (all the calculations and variables with values)
+
+%}
+
+%{
 Setup Section 
 %}
 
@@ -15,6 +43,8 @@ advanced_data = readtable(fullfile('..','Data','Athletes','Athlete_Advanced.csv'
 %{
 Analysis Section
 %}
+
+%Variable Set Up for Later Calculations
 
 beginner_zones = [];
 intermediate_zones = [];
@@ -39,8 +69,12 @@ beginner_recovery_rates = [];
 intermediate_recovery_rates = [];
 advanced_recovery_rates = [];
 
-for i = 1:height(beginner_data)
 
+%Looping through each workout in the beginner data
+for i = 1:height(beginner_data)
+    
+    %Calculating the zones each workout falls under and finding the resting
+    %time of each workout
     if beginner_data.PostWorkoutHR(i) == beginner_data.PreWorkoutHR(i)
         beginner_zones = [beginner_zones; "Resting"];
         beginner_resting_time = beginner_resting_time + beginner_data.Duration(i);
@@ -58,14 +92,18 @@ for i = 1:height(beginner_data)
         beginner_vigorous_time = beginner_vigorous_time + beginner_data.Duration(i);
     end
 
+    %Finding recovery rates of each beginner workout (excluding rest days)
     if beginner_data.PostWorkoutHR(i) ~= beginner_data.PreWorkoutHR(i)
         beginner_recovery_rates = [beginner_recovery_rates; beginner_data.PostWorkoutHR(i) - beginner_data.PreWorkoutHR(i)];
     end
 
 end
 
-
+%Looping through each workout in the intermediate data
 for i = 1:height(intermediate_data)
+
+    %Calculating the zones each workout falls under and finding the resting
+    %time of each workout
     if intermediate_data.PostWorkoutHR(i) == intermediate_data.PreWorkoutHR(i)
         intermediate_zones = [intermediate_zones; "Resting"];
         intermediate_resting_time = intermediate_resting_time + intermediate_data.Duration(i);
@@ -83,14 +121,18 @@ for i = 1:height(intermediate_data)
         intermediate_vigorous_time = intermediate_vigorous_time + intermediate_data.Duration(i);
     end
 
+    %Finding recovery rates of each intermediate workout (excluding rest days)
     if intermediate_data.PostWorkoutHR(i) ~= intermediate_data.PreWorkoutHR(i)
         intermediate_recovery_rates = [intermediate_recovery_rates; intermediate_data.PostWorkoutHR(i) - intermediate_data.PreWorkoutHR(i)];
     end
 
 end
 
-
+%Looping through each workout in the advanced data
 for i = 1:height(advanced_data)
+
+    %Calculating the zones each workout falls under and finding the resting
+    %time of each workout
     if advanced_data.PostWorkoutHR(i) == advanced_data.PreWorkoutHR(i)
         advanced_zones = [advanced_zones; "Resting"];
         advanced_resting_time = advanced_resting_time + advanced_data.Duration(i);
@@ -107,6 +149,8 @@ for i = 1:height(advanced_data)
         advanced_zones = [advanced_zones; "Vigorous"];
         advanced_vigorous_time = advanced_vigorous_time + advanced_data.Duration(i);
     end
+
+    %Finding recovery rates of each intermediate workout (excluding rest days)
     if advanced_data.PostWorkoutHR(i) ~= advanced_data.PreWorkoutHR(i)
         advanced_recovery_rates = [advanced_recovery_rates; advanced_data.PostWorkoutHR(i) - advanced_data.PreWorkoutHR(i)];
     end
@@ -114,6 +158,8 @@ for i = 1:height(advanced_data)
 end
 
 
+%Creating the time table for the workouts by creating the columns first and
+%then using table()
 Athletes = ["Athlete 1"; "Athlete 2"; "Athlete 3"];
 Resting = [beginner_resting_time; intermediate_resting_time; advanced_resting_time];
 Light = [beginner_light_time; intermediate_light_time; advanced_light_time];
@@ -121,30 +167,38 @@ Moderate = [beginner_moderate_time; intermediate_moderate_time; advanced_moderat
 Vigorous = [beginner_vigorous_time; intermediate_vigorous_time; advanced_vigorous_time];
 time_table = table(Athletes, Resting, Light, Moderate, Vigorous)
 
+%Getting the indices of each workout that's not a rest day for accurate
+%results
 valid_B = beginner_data.Duration > 0;
 valid_I = intermediate_data.Duration > 0;
 valid_A = advanced_data.Duration > 0;
 
+%Average post workout HR using the mean of the valid data
 beginner_avg_HR = round(mean(beginner_data.PostWorkoutHR(valid_B)));
 intermediate_avg_HR = round(mean(intermediate_data.PostWorkoutHR(valid_I)));
 advanced_avg_HR = round(mean(advanced_data.PostWorkoutHR(valid_A)));
 
+%Duration of the workouts in total using the sum of the duration column
 beginner_duration = sum(beginner_data.Duration);
 intermediate_duration = sum(intermediate_data.Duration);
 advanced_duration = sum(advanced_data.Duration);
 
+%Mean of the recovery rates calculated in the loop for each level 
 beginner_mean_recovery_rate = mean(beginner_recovery_rates);
 intermediate_mean_recovery_rate = mean(intermediate_recovery_rates);
 advanced_mean_recovery_rate = mean(advanced_recovery_rates);
 
+%The mean duration of the workouts
 beginner_mean_duration = mean(beginner_data.Duration(valid_B));
 intermediate_mean_duration = mean(intermediate_data.Duration(valid_I));
 advanced_mean_duration = mean(advanced_data.Duration(valid_A));
 
+%The standard deviation of the valid intensity values in the data
 beginner_std_intensity = round(std(beginner_data.Intensity(valid_B)),1);
 intermediate_std_intensity = round(std(intermediate_data.Intensity(valid_I)),1);
 advanced_std_intensity = round(std(advanced_data.Intensity(valid_A)),1);
 
+%The total amound of workouts (excluding rest)
 beginner_total_workouts = sum(valid_B);
 intermediate_total_workouts = sum(valid_I);
 advanced_total_workouts = sum(valid_A);
