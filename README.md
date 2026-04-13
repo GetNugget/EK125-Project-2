@@ -1,3 +1,15 @@
+Fitness Tracker Analysis - Option 1
+
+Roles:
+
+Cody Phothisane - Data Manager
+Jason Nguyen - Algorithm Developer
+Albert Liu - Visualization Specialist
+
+Directory Structure:
+
+	We have a main directory for our project. Inside, we have 3 sub directories. The first sub directory contains all of our data for each of the three athletes. There will be three spreadsheets containing the exercise type, pre workout heart rate, post workout heart rate, duration, and intensity. There will also be a file that explains what each profile is (the beginner, intermediate, and advanced athlete). The second sub directory contains all the scripts which is essentially all of our code. The main script will contain the calculations needed for the plots as well as the summary table, including average heart rate, average intensity, etc. The code for creating all the plots is also in the scripts sub directory. They include importing the main script for the variables calculated there and the formatting for the plots. The third sub directory contains the results which basically means all the outputs of whatever code is run from the script subdirectory. This includes all the plots in png format, and all the tables created from the main script such as the summary table. 
+
 Run Instructions:
 
 Make sure to run the main_analysis.m file first. Run each script separately. Make sure the script fully runs, and before running the next figure, make sure to close the plot that was previously generated so that it doesn't simply get overwritten by the current plot.
