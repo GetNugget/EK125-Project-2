@@ -21,4 +21,4 @@ title("Advanced Workout Duration Distribution")
 ylabel("Frequency")
 xlabel("Workout Duration (minutes)")
 
-saveas(gcf, fullfile("..", "Results", "Figures", "Duration_Distribution"))
+saveas(gcf, fullfile("..", "Results", "Figures", "Duration_Distribution.png"))
