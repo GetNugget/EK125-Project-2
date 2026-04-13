@@ -47,4 +47,4 @@ title("Athlete Training Consistency")
 ylabel("Training Consistency")
 xlabel("Athlete")
 
-saveas(gcf, fullfile("..", "Results", "Figures", "Summary_Dashboard"))
+saveas(gcf, fullfile("..", "Results", "Figures", "Summary_Dashboard.png"))
